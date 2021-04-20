@@ -1,0 +1,41 @@
+library(ggplot2)
+library(cowplot)
+
+## load data
+data <- read.table("/Users/au612643/Desktop/par/rScripts/github/fig1.txt", sep = "\t", header = T)
+
+dataTemp <- data.frame(POS = rep(data$POS, 3),
+                       chr = rep(data$chr, 3),
+                       cMmb = rep(data$cMmb, 3),
+                       freq = c(data$freqTSnoncpg,data$freqTScpg,data$freqTVnoncpg),
+                       count  = c(data$countTSnoncpg,data$countTScpg,data$countTVnoncpg),
+                       mType = c(rep("TS (CpG-)", dim(data)[1]), rep("TS (CpG+)", dim(data)[1]), rep("TV (CpG-)", dim(data)[1])))
+
+## plots
+f1a <- ggplot(data, aes(x=log2(cMmb), y=log2(freqGC)))  + geom_point(size=0.005, shape=21, alpha=0.5) + 
+  geom_smooth(method="lm", lty =2, lwd=0.7,col="#e41a1c") +theme_bw() +
+  xlab(expression(italic(log[2])(cM/Mb))) + ylab(expression(italic(log[2])(italic(f[GC]))))
+
+f1b <- ggplot(dataTemp, aes(x=log2(cMmb), y=log2(freq),colour = mType))  + geom_point(size=0.005,alpha=0.2) + 
+  geom_smooth(method="lm", lty =2, lwd=0.7) +theme_bw() + theme(legend.title = element_blank())+
+  xlab(expression(italic(log[2])(cM/Mb))) + ylab(expression(italic(log[2])(italic(f[GC])))) +
+  scale_color_manual(values = c("#377eb8", "#e41a1c", "#4daf4a"))
+
+legf1b <- get_legend(f1b)
+f1b <- f1b + theme(legend.position = "none")
+
+f1c <- ggplot(dataTemp, aes(x=log2(cMmb), y=log2(count),colour = mType,))  + geom_point(size=0.005,alpha=0.2) + 
+  geom_smooth(method="lm", lty =2, lwd=0.7) +theme_bw() + theme(legend.position = "none")+
+  xlab(expression(italic(log[2])(cM/Mb))) + ylab(expression(italic(log[2])(Count))) +
+  scale_color_manual(values = c("#377eb8", "#e41a1c", "#4daf4a"))
+
+f1d <- ggplot(dataTemp, aes(x=log2(freq), y=log2(count),colour = mType,))  + geom_point(size=0.005,alpha=0.2) + 
+  geom_smooth(method="lm", lty =2, lwd=0.7) +theme_bw() + theme(legend.title = element_blank())+
+  xlab(expression(italic(log[2])(italic(f[GC])))) + ylab(expression(italic(log[2])(Count))) +
+  scale_color_manual(values = c("#377eb8", "#e41a1c", "#4daf4a"))
+
+legf1d <- get_legend(f1d)
+f1d <- f1d + theme(legend.position = "none")
+
+tt <- plot_grid(f1a,f1b,legf1b,f1c,f1d,legf1d, ncol = 3, align="bt", rel_widths = c(2,2,0.8), labels = c("A", "B", "", "C", "D", ""))
+ggsave("/Users/au612643/Desktop/par/rScripts/github/fig1.pdf", tt, width=18.5, height=12, units = "cm")
