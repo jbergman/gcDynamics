@@ -9,9 +9,9 @@ humChr <- c("chr1","chr2","chr3","chr4","chr5","chr6","chr7","chr8","chr9","chr1
 
 for(i in 1:(length(humChr))){
   if(i==1){
-    afYRI <- read.table(paste("/Users/au612643/Desktop/par/thousandGenomes/populations/YRI/counts/chr1.af", sep=""), head=T, sep = "\t")
+    afYRI <- read.table(paste("chr1YRI.af", sep=""), head=T, sep = "\t")
   }else{
-    temp <- read.table(paste("/Users/au612643/Desktop/par/thousandGenomes/populations/YRI/counts/",humChr[i],".af", sep=""), head=T, sep = "\t")
+    temp <- read.table(paste(humChr[i],"YRI.af", sep=""), head=T, sep = "\t")
     afYRI <- rbind(afYRI, temp)
   }
 }
@@ -57,9 +57,9 @@ f2a
 
 for(i in 1:(length(humChr))){
   if(i==1){
-    afTSI <- read.table(paste("/Users/au612643/Desktop/par/thousandGenomes/populations/TSI/counts/chr1.af", sep=""), head=T, sep = "\t")
+    afTSI <- read.table(paste("chr1TSI.af", sep=""), head=T, sep = "\t")
   }else{
-    temp <- read.table(paste("/Users/au612643/Desktop/par/thousandGenomes/populations/TSI/counts/",humChr[i],".af", sep=""), head=T, sep = "\t")
+    temp <- read.table(paste(humChr[i],"TSI.af", sep=""), head=T, sep = "\t")
     afTSI <- rbind(afTSI, temp)
   }
 }
@@ -102,9 +102,9 @@ f2b
 
 for(i in 1:(length(humChr))){
   if(i==1){
-    afCHB <- read.table(paste("/Users/au612643/Desktop/par/thousandGenomes/populations/CHB/counts/chr1.af", sep=""), head=T, sep = "\t")
+    afCHB <- read.table(paste("chr1CHB.af", sep=""), head=T, sep = "\t")
   }else{
-    temp <- read.table(paste("/Users/au612643/Desktop/par/thousandGenomes/populations/CHB/counts/",humChr[i],".af", sep=""), head=T, sep = "\t")
+    temp <- read.table(paste(humChr[i],"CHB.af", sep=""), head=T, sep = "\t")
     afCHB <- rbind(afCHB, temp)
   }
 }
@@ -147,9 +147,9 @@ f2c
 
 for(i in 1:(length(humChr))){
   if(i==1){
-    afISL <- read.table(paste("/Users/au612643/Desktop/par/decode/counts/chr1.af", sep=""), head=T, sep = "\t")
+    afISL <- read.table(paste("chr1ISL.af", sep=""), head=T, sep = "\t")
   }else{
-    temp <- read.table(paste("/Users/au612643/Desktop/par/decode/counts/",humChr[i],".af", sep=""), head=T, sep = "\t")
+    temp <- read.table(paste(humChr[i],"ISL.af", sep=""), head=T, sep = "\t")
     afISL <- rbind(afISL, temp)
   }
 }
