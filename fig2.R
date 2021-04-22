@@ -191,6 +191,6 @@ f2d <- f2d + theme(legend.position = "none")
 blank <- ggplot() + theme_void()
 tt <- plot_grid(f2a,f2b,blank,f2c,f2d,legend, ncol = 3, align="v",axis = "l", rel_widths = c(2,2,0.5,2,2,0.5))
 tt <- plot_grid(f2a,f2b,f2c,f2d, ncol = 2, align="v",axis = "l")
-ggsave("/Users/au612643/Desktop/par/rScripts/github/fig2.pdf", tt, width=28, height=22, units = "cm")
+ggsave("fig2.pdf", tt, width=28, height=22, units = "cm")
 
 
