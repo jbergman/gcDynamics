@@ -2,7 +2,7 @@ library(ggplot2)
 library(cowplot)
 
 ## load data
-data <- read.table("/Users/au612643/Desktop/par/rScripts/github/fig5_S9.txt", header = T, sep = "\t")
+data <- read.table("fig5_S9.txt", header = T, sep = "\t")
 data$pop <- factor(data$pop, levels = c("YRI", "TSI", "CHB", "ISL"))
 
 ## Figure 5
@@ -13,7 +13,7 @@ f5b <- ggplot(data, aes(tp, fp, fill= B)) +  geom_tile() + facet_grid(pop~mType)
   theme_bw() + theme(legend.title = element_blank())+ scale_fill_distiller(palette = "RdBu", limits=c(-1*max(data$B),max(data$B)))
 
 tt <- plot_grid(f5a, f5b, ncol = 2, labels = c("A", "B"))
-ggsave("/Users/au612643/Desktop/par/rScripts/github/fig5.pdf", tt, width=20, height=9, units = "cm")
+ggsave("fig5.pdf", tt, width=20, height=9, units = "cm")
 
 ## Supplementary figure 9
 ratios <- data.frame(fp = rep(c(rep("A", 4),rep("C", 4),rep("G", 4),rep("T", 4)),8), tp = rep(c("A", "C", "G", "T"),32), mType = rep(c(rep("TS",16), rep("TV",16)),4),
@@ -30,4 +30,4 @@ fS9b <- ggplot(subset(ratios,pop=="ISL"), aes(tp, fp, fill= (rat))) +  geom_tile
   theme_bw() + theme(legend.title = element_blank())+ scale_fill_distiller(palette = "RdBu")
 
 tt <- plot_grid(fS9a, fS9b, ncol = 2, labels = c("A", "B"))
-ggsave("/Users/au612643/Desktop/par/rScripts/github/figS9.pdf", tt, width=20, height=6, units = "cm")
+ggsave("figS9.pdf", tt, width=20, height=6, units = "cm")
