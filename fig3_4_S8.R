@@ -2,7 +2,7 @@ library(ggplot2)
 library(cowplot)
 
 ## load data
-data <- read.table("fig3_5_S8.txt", header = T, sep="\t")
+data <- read.table("fig3_4_S8.txt", header = T, sep="\t")
 
 #### Figure 3
 data3 <- subset(data, pop%in%c("YRI", "TSI", "CHB", "ISL"))
@@ -23,14 +23,14 @@ f3b <- ggplot(data3, aes(x=cMmb, y=B, colour = mType)) + geom_point(size=1.25, s
 tt <- plot_grid(f3a, f3b, ncol = 1, align = "v", rel_heights = c(1.2,1), labels = c("A", "B"))
 ggsave("fig3.pdf", tt, width=15, height=12, units = "cm")
 
-#### Figure 5
+#### Figure 4
 data$superpop <- factor(data$superpop, levels = c("AFR", "SAS", "EAS", "EUR", "AMR"))
 
-f5 <- ggplot(data, aes(x=mType, y=B_full, color=mType)) + geom_boxplot(outlier.size = 0.5,shape=21) + facet_wrap(.~superpop, ncol = 7, nrow = 4) +
+f4 <- ggplot(data, aes(x=mType, y=B_full, color=mType)) + geom_boxplot(outlier.size = 0.5,shape=21) + facet_wrap(.~superpop, ncol = 7, nrow = 4) +
   theme_bw() + theme(legend.position = "none", axis.title.x = element_blank(), axis.text.x = element_text(angle = 90, hjust = 1)) +
   ylab(expression(italic(B)))+ scale_color_manual(values=c("#377eb8", "#e41a1c", "#4daf4a"))
 
-ggsave("fig5.pdf",f5, width=15, height=7, units = "cm")
+ggsave("fig4.pdf",f4, width=15, height=7, units = "cm")
 
 #### Supplementary figure S8
 data$superpop <- factor(data$superpop, levels = c("AFR", "AMR", "EAS", "EUR","SAS"))
