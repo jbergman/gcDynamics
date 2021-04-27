@@ -2,7 +2,7 @@ library(ggplot2)
 library(cowplot)
 
 ## load data
-data <- read.table("fig7.txt", header = T, sep = "\t")
+data <- read.table("/Users/au612643/Desktop/par/rScripts/github/fig7.txt", header = T, sep = "\t")
 
 ## Figure 7
 data$pop <- factor(data$pop, levels = c("PTE","PTS","PTT","PTV","PPA","GGG","PAB","PPY"))
@@ -19,4 +19,4 @@ f3b <- ggplot(data, aes(x=cMmb, y=gamma, colour = mType)) + geom_point(size=1.25
   scale_x_continuous(breaks = c(0.3,0.5,0.6,0.8,1.0,1.2,1.4,1.6)) + scale_y_continuous(breaks = c(0.0,0.4,0.8,1.2))
 
 tt <- plot_grid(f3a, f3b, ncol = 1, align = "v", rel_heights = c(1.2,1), labels = c("A", "B"))
-ggsave("fig7.pdf", tt, width=23.5, height=11, units = "cm")
+ggsave("/Users/au612643/Desktop/par/rScripts/github/fig7.pdf", tt, width=23.5, height=11, units = "cm")
