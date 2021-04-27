@@ -2,7 +2,7 @@ library(ggplot2)
 library(cowplot)
 
 ## load data
-data <- read.table("fig1.txt", sep = "\t", header = T)
+data <- read.table("fig1_S11.txt", sep = "\t", header = T)
 dataFilt = subset(data, countTV>0&countTS>0&countGC>999&cMmb>0&cMmb<5)
 
 dataTemp <- data.frame(POS = rep(dataFilt$POS, 3),
