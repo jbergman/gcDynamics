@@ -2,7 +2,7 @@ library(ggplot2)
 library(cowplot)
 
 ## load data
-data <- read.table("/Users/au612643/Desktop/par/rScripts/github/figS7.txt", header =T,  sep="\t")
+data <- read.table("figS7.txt", header =T,  sep="\t")
 
 #### Supplementary figure 7
 fS4a <- ggplot(subset(data, mType =="TS (CpG-)"), aes(x=log2(freqYRI), y=log2(freqTSI))) + geom_point(size=0.5) + theme_bw()+
@@ -14,4 +14,4 @@ fS4c <- ggplot(subset(data, mType =="TS (CpG-)"), aes(x=log2(cMmbYRI), y=log2(cM
 
 tt <- plot_grid(fS4a, fS4b, fS4c, ncol = 3, labels = c("A", "B", "C"))
 
-ggsave("/Users/au612643/Desktop/par/rScripts/github/figS7.pdf", tt, width=27, height=9, units = "cm")
+ggsave("figS7.pdf", tt, width=27, height=9, units = "cm")
