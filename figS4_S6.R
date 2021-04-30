@@ -2,7 +2,7 @@ library(ggplot2)
 library(cowplot)
 
 ### load data
-data <- read.table("/Users/jura/Desktop/rev/rscripts/figS4_S6.txt", header = T, sep = "\t")
+data <- read.table("figS4_S6.txt", header = T, sep = "\t")
 data$pop <- factor(data$pop, levels = c("YRI", "TSI", "CHB"))
 
 ## Supplementary figure S4
@@ -17,10 +17,10 @@ figS4b <- ggplot(subset(data, conv=="OK"), aes(x=cMmb, y=B_glem, colour = mType)
   scale_x_continuous(breaks = c(0.9,1.2,1.5,1.8,2.1))
 
 tt <- plot_grid(figS4a, figS4b, ncol = 1, align = "v", rel_heights = c(1.2,1), labels = c("A", "B"))
-ggsave("/Users/jura/Desktop/rev/plots/figS4.pdf", tt, width=15, height=12, units = "cm")
+ggsave("figS4.pdf", tt, width=15, height=12, units = "cm")
 
 ## Supplementary figure S6
 figS6 <- ggplot(data, aes(x=B_berg, y=B_glem)) + geom_point() + theme_bw() + facet_grid(.~pop) +
          xlab(expression(italic(B) - "this study")) + ylab(expression(italic(B) - "Glemin et al. (2015)"))
 
-ggsave("/Users/jura/Desktop/rev/plots/figS6.pdf", figS6, width=25, height=8, units = "cm")
+ggsave("figS6.pdf", figS6, width=25, height=8, units = "cm")
