@@ -2,8 +2,8 @@ library(ggplot2)
 library(cowplot)
 
 ### load data
-dataA <- read.table("/Users/jura/Desktop/rev/rscripts/figS5a.txt", header=T, sep="\t")
-dataB <- read.table("/Users/jura/Desktop/rev/rscripts/figS5b.txt", header=T, sep="\t")
+dataA <- read.table("figS5a.txt", header=T, sep="\t")
+dataB <- read.table("figS5b.txt", header=T, sep="\t")
 
 ### Supplementary figure S5
 dataA$pop <- factor(dataA$pop, levels = c("YRI", "TSI", "CHB"))
@@ -20,4 +20,4 @@ figS5b <- ggplot(subset(dataB, conv=="OK"&mType!="TV (CpG+)"), aes(x=mType, y=B,
   ylab(expression(italic(B)))+ scale_color_manual(values=c("gray", "#377eb8", "#e41a1c", "#4daf4a"))
 
 tt <- plot_grid(figS5a, figS5b, ncol = 1, align = "v", rel_heights = c(1,1), labels = c("A", "B"))
-ggsave("/Users/jura/Desktop/rev/plots/figS5.pdf", tt, width=15, height=12, units = "cm")
+ggsave("figS5.pdf", tt, width=15, height=12, units = "cm")
