@@ -23,4 +23,4 @@ df$SFS <- factor(df$SFS, levels = c("expected genome-wide (v; u)", "expected CpG
 aa <- ggplot(df, aes(x=freq, y=dist, fill=SFS)) + geom_bar(position="dodge", stat="identity") + theme_bw() + xlab("Frequency") +
       ylab("Proportion") +theme(legend.title = element_blank())
 aa
-ggsave("figS3.png", aa, width=15, height=8, units = "cm")
+ggsave("figS3.pdf", aa, width=15, height=8, units = "cm")
