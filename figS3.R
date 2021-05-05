@@ -20,7 +20,7 @@ df <- data.frame(freq = rep(xs,5),
                  SFS = c(rep("expected genome-wide (v; u)",20),rep("expected CpG (v; 10x u)",20),rep("v; 50x u",20),rep("v; 100x u",20),rep("v; 1000x u",20)))
 df$SFS <- factor(df$SFS, levels = c("expected genome-wide (v; u)", "expected CpG (v; 10x u)", "v; 50x u", "v; 100x u", "v; 1000x u"))
 
-aa <- ggplot(df, aes(x=freq, y=dist, fill=SFS)) + geom_bar(position="dodge", stat="identity") + theme_bw() + xlab("Frequency") +
+fS3 <- ggplot(df, aes(x=freq, y=dist, fill=SFS)) + geom_bar(position="dodge", stat="identity") + theme_bw() + xlab("Frequency") +
       ylab("Proportion") +theme(legend.title = element_blank())
-aa
-ggsave("figS3.pdf", aa, width=15, height=8, units = "cm")
+
+ggsave("figS3.pdf", fS3, width=15, height=8, units = "cm")
