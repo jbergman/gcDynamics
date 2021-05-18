@@ -5,7 +5,7 @@
 ## sfsSize = number of frequency categories in the SFS
 
 calculateB <- function(sfs, neutSFS, fr, sfsSize){
-  ## make the neutral SFS symetric
+  ## make the neutral SFS symmetric
   if(sfsSize%%2==1){
     neutSFS2 <- c(c(neutSFS[1:floor(sfsSize/2)]+rev(neutSFS[(ceiling(sfsSize/2)+1):sfsSize])), 2*neutSFS[ceiling(sfsSize/2)],
                   rev(c(neutSFS[1:floor(sfsSize/2)]+rev(neutSFS[(ceiling(sfsSize/2)+1):sfsSize]))))
@@ -14,7 +14,7 @@ calculateB <- function(sfs, neutSFS, fr, sfsSize){
                   rev(c(neutSFS[1:(sfsSize/2)]+rev(neutSFS[(sfsSize/2):sfsSize]))))
   }
   
-  ## calculate r_y coeffcients
+  ## calculate r_y coefficients
   neutRel2 <- neutSFS2/sum(neutSFS2)
   exp <- (((sfsSize+1)/((1:sfsSize)*(sfsSize:1)))/sum((sfsSize+1)/((1:sfsSize)*(sfsSize:1))))
   rs <-  neutRel2/exp
