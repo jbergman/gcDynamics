@@ -10,8 +10,8 @@ calculateB <- function(sfs, neutSFS, fr, sfsSize){
     neutSFS2 <- c(c(neutSFS[1:floor(sfsSize/2)]+rev(neutSFS[(ceiling(sfsSize/2)+1):sfsSize])), 2*neutSFS[ceiling(sfsSize/2)],
                   rev(c(neutSFS[1:floor(sfsSize/2)]+rev(neutSFS[(ceiling(sfsSize/2)+1):sfsSize]))))
   }else{
-    neutSFS2 <- c(c(neutSFS[1:(sfsSize/2)]+rev(neutSFS[(sfsSize/2):sfsSize])),
-                  rev(c(neutSFS[1:(sfsSize/2)]+rev(neutSFS[(sfsSize/2):sfsSize]))))
+    neutSFS2 <- c(c(neutSFS[1:(sfsSize/2)]+rev(neutSFS[(sfsSize/2+1):sfsSize])),
+                  rev(c(neutSFS[1:(sfsSize/2)]+rev(neutSFS[(sfsSize/2+1):sfsSize]))))
   }
   
   ## calculate r_y coefficients
