@@ -2,7 +2,7 @@
 ## neutSFS = neutral site frequency spectrum (from A<->T and G<->C sites)
 ## fr = determines which frequency category to keep - if set to 1, all frequency categories are considered when calculating B, 
 ## if set to 2, the singletons will be excluded, if set to 3, singletons and doubletons are excluded, etc...
-## sfsSize = number of frequency categories in the SFS
+## sfsSize = number of frequency categories in the SFS (before exclusion of categories)
 
 calculateB <- function(sfs, neutSFS, fr, sfsSize){
   ## make the neutral SFS symmetric
